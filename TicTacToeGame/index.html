@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        h1 {
+            font-family: cursive;
+            color: coral;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            row-gap: 20px;
+            column-gap: 20px;
+        }
+
+        .dim {
+            opacity: 0.2;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
+            box-shadow: 3px 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            font-family: cursive;
+            transition: all .5s ease;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        .alert {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            justify-content: start;
+            padding-top: 30px;
+            flex-direction: column;
+            border-radius: 20px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            background-color: white;
+            visibility: hidden;
+
+        }
+
+        .alert h1 {
+
+
+            color: gray;
+            font-weight: 700;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 25px;
+        }
+
+        .alert h3 {
+            color: gray;
+            font-weight: 500;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .alert button {
+            background-color: transparent;
+            font-weight: 600;
+            font-family: Arial, Helvetica, sans-serif;
+            color: gray;
+            border: none;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px 20px;
+
+            &:hover {
+                background-color: rgba(239, 213, 213, 0.2);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tic Tac Toe</h1>
+    <div class="container">
+        <div id="0" onclick="play(this)" class="box"></div>
+        <div id="1" onclick="play(this)" class="box"></div>
+        <div id="2" onclick="play(this)" class="box"></div>
+        <div id="3" onclick="play(this)" class="box"></div>
+        <div id="4" onclick="play(this)" class="box"></div>
+        <div id="5" onclick="play(this)" class="box"></div>
+        <div id="6" onclick="play(this)" class="box"></div>
+        <div id="7" onclick="play(this)" class="box"></div>
+        <div id="8" onclick="play(this)" class="box"></div>
+    </div>
+    <div id="alert" class="alert">
+        <h1 id="title"></h1>
+        <h3 id="sub-title">You won the Game</h3>
+        <button onclick="restartGame()">Restart Game</button>
+    </div>
+    <script>
+
+
+        // Variable Declarations 
+        let turn = "X";
+        let arr = new Array(9).fill(null)
+        let isWin = false;
+        let div = document.getElementById("alert")
+        let btns = document.querySelectorAll(".box")
+
+
+        // Play Function 
+        function play(e) {
+            if (!isWin) {
+                if (arr[e.id] == null) {
+                    if (turn == "X") {
+                        turn = "O"
+                    } else {
+                        turn = "X"
+                    }
+                    e.innerText = turn
+                    arr[e.id] = turn
+                    checkWinner();
+
+                } else {
+                    return;
+                }
+            } else {
+                return;
+            }
+
+
+        }
+
+
+        // checkWinner Function 
+
+        function checkWinner() {
+            if (
+                arr[0] !== null && arr[0] == arr[1] && arr[1] == arr[2] ||
+                arr[3] !== null && arr[3] == arr[4] && arr[4] == arr[5] ||
+                arr[6] !== null && arr[6] == arr[7] && arr[7] == arr[8] ||
+                arr[0] !== null && arr[0] == arr[2] && arr[2] == arr[6] ||
+                arr[0] !== null && arr[0] == arr[3] && arr[3] == arr[6] ||
+                arr[1] !== null && arr[1] == arr[4] && arr[4] == arr[7] ||
+                arr[2] !== null && arr[2] == arr[5] && arr[5] == arr[8] ||
+                arr[0] !== null && arr[0] == arr[4] && arr[4] == arr[8] ||
+                arr[2] !== null && arr[2] == arr[4] && arr[4] == arr[6]
+            ) {
+                isWin = true
+                div.style.visibility="visible"
+                document.getElementById("title").innerText=`Congratulation Player ${turn}`
+            } else {
+                if (arr.includes(null)) {
+                    return
+                } else {
+                div.style.visibility="visible"
+                document.getElementById("title").innerText=`Game is Draw`
+                document.getElementById("sub-title").innerText=`No one win the Game `
+
+                }
+            }
+        }
+
+        // restartGame Function 
+        
+        function restartGame() {
+            div.style.visibility = "hidden";
+
+            arr = new Array(9).fill(null)
+
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].innerText = ""
+
+            }
+
+            isWin=false
+        }
+
+    </script>
+</body>
+
+</html>
