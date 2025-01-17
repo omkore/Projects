@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1d1d1d;
+            height: 100vh;
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 80%;
+        }
+
+        .slider{
+            max-width: 1024px;
+          
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+            border-radius: 20px;
+
+        }
+        .slide{
+            display: flex;
+            max-width: 100%;
+            height: 100%;
+        }
+        .slide img{
+            min-width: 1024px;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+           
+        }
+
+        .btn{
+            background-color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 20px ;
+        }
+        .button-left{
+            left: 15px;
+
+        }
+        .button-right{
+            right: 15px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slider">
+            <div onclick="prevImg()" class="btn button-left">&lt;</div>
+
+            <div id="slide" class="slide">
+                <img id="img" src="./img1.jpg" alt="">
+                <img id="img" src="./img2.jpg" alt="">
+                <img id="img" src="./img3.jpg" alt="">
+                <img id="img" src="./img4.jpg" alt="">
+            </div>
+
+            <div onclick="slideImage" class="btn button-right">&gt;</div>
+        </div>
+    </div>
+    <script>
+        let slide = document.getElementById("slide");
+        let img = document.getElementById("img");
+        let imageIndex =1 ;
+ 
+ 
+
+    </script>
+</body>
+</html>

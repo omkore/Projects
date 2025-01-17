@@ -1,0 +1,109 @@
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+       }
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+        
+
+        
+    }
+    #card{
+        display: flex;flex-direction: column;
+        padding: 20px;
+        width: 30%;
+       gap: 20px;
+
+        border-radius: 20px;
+        border: 1px solid black;
+       /* From https://css.glass */
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+
+    .srch-container{
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 20px;
+    }
+    .srch-container #input{
+        background-color: transparent;
+        outline: none;
+        border: none;
+    }
+
+    .srch-container #input{
+        width: 90%;
+    }
+
+    button{
+        background: transparent;
+        outline: none;
+        border: none;
+    }
+
+
+.bottom{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+}
+.row1,.row2,.row3{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    color: white;
+}
+
+.row1  {
+}
+
+.row2 #temp{
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+
+.bottom .left img{
+    width: 100px;
+    height: 100px;
+    
+}
